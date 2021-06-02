@@ -25,23 +25,25 @@ public class PlayerThings : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (interactable.name == "Lamp" && lamp == false)
-                lamp = true;
-            else if (interactable.name == "Photo" && photo == false)
-                photo = true;
-            else if (interactable.name == "Photo2" && photo2 == false)
-                photo2 = true;
-            else if (interactable.name == "Photo3" && photo3 == false)
-                photo3 = true;
-            else if (interactable.name == "Radio" && radio == false)
-                radio = true;
-            else if (interactable.name == "Radio2" && radio2 == false)
-                radio2 = true;
-            else if (interactable.name == "Radio3" && radio3 == false)
-                radio3 = true;
+            if(interactable != null)
+            {
+                interactable.gameObject.GetComponent<ObjectScript>().is_used = true;
 
+                if (interactable.name == "Lamp" && lamp == false)
+                    lamp = true;
+                else if (interactable.name == "Photo" && photo == false)
+                    photo = true;
+                else if (interactable.name == "Photo2" && photo2 == false)
+                    photo2 = true;
+                else if (interactable.name == "Photo3" && photo3 == false)
+                    photo3 = true;
+                else if (interactable.name == "Radio" && radio == false)
+                    radio = true;
+                else if (interactable.name == "Radio2" && radio2 == false)
+                    radio2 = true;
+                else if (interactable.name == "Radio3" && radio3 == false)
+                    radio3 = true;
+            }
         }
-            
-
     }
 }
