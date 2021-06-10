@@ -12,13 +12,10 @@ public class LampScript : MonoBehaviour
     public GameObject[] walls;
     public GameObject photo;
     public GameObject photo2;
-    public GameObject photo3;
     public GameObject radio;
     public GameObject radio2;
-    public GameObject radio3;
     public Material wall2;
     public Material wall3;
-    public Material wall4;
     public GameObject elmuerto;
 
     // Start is called before the first frame update
@@ -38,15 +35,37 @@ public class LampScript : MonoBehaviour
                 mylight.SetActive(b_light);
                 GetComponent<ObjectScript>().is_used = false;
             }
-            else
+            else if (!a_la_mierda)
             {
-                if (!a_la_mierda)
-                {
-                    a_la_mierda = true;
-                    StopCoroutine(ChangeLight());
-                    mylight.SetActive(false);
-                    Invoke("MeCagoDuranteDosSegundos", 2);
-                }
+                a_la_mierda = true;
+                StopCoroutine(ChangeLight());
+                mylight.SetActive(false);
+                Invoke("MeCagoDuranteDosSegundos", 1);
+            }
+            
+        }
+        if(player.photo2 && player.radio2)
+        {
+            if(a_la_mierda && player.lamp)
+            {
+                StartCoroutine(ChangeLight());
+                a_la_mierda = false;
+                player.photo = false;
+                player.radio = false;
+                player.lamp = false;
+            }
+            else if(!a_la_mierda && !player.lamp)
+            {
+                mylight.SetActive(b_light);
+                GetComponent<ObjectScript>().is_used = false;
+            }
+            else if(!a_la_mierda && player.lamp)
+            {
+                a_la_mierda = true;
+                player.lamp = false;
+                StopCoroutine(ChangeLight());
+                mylight.SetActive(false);
+                Invoke("MeCagoDuranteDosSegundos", 1);
             }
         }
         
@@ -57,7 +76,7 @@ public class LampScript : MonoBehaviour
         while(true)
         {
             b_light = !b_light;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(Random.Range(0.05f, 0.3f));
         }
     }
 
@@ -80,24 +99,20 @@ public class LampScript : MonoBehaviour
 
             photo.SetActive(false);
             radio.SetActive(false);
-            elmuerto.SetActive(true);
-
-            if (player.photo2 && player.radio2)
-            {
-                //Aquí cambio al tercer ciclo
-                for (int i = 0; i < walls.Length; i++)
-                {
-                    walls[i].GetComponent<MeshRenderer>().material = wall3;
-                }
-
-                if (player.photo3 && player.radio3)
-                {
-                    for (int i = 0; i < walls.Length; i++)
-                    {
-                        walls[i].GetComponent<MeshRenderer>().material = wall4;
-                    }
-                }
-            }
+            photo2.SetActive(true);
+            radio2.SetActive(true);
         }
+
+        if (player.photo2 && player.radio2)
+        {
+            //Aquí cambio al tercer ciclo
+            for (int i = 0; i < walls.Length; i++)
+            {
+                walls[i].GetComponent<MeshRenderer>().material = wall3;
+            }
+
+            elmuerto.SetActive(true);
+        }
+        
     }
 }
