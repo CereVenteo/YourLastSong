@@ -13,10 +13,19 @@ public class PlayerThings : MonoBehaviour
     public bool radio2 = false;
 
     public GameObject interactable;
-   
+    public GameObject cutscenecam;
+    public GameObject player;
+    public GameObject photo1;
+
+
+    public Animator animcam;
+    public Animator animphoto1;
+
 
     void Start()
     {
+        animcam = cutscenecam.GetComponent<Animator>();
+        animphoto1 = photo1.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,7 +41,15 @@ public class PlayerThings : MonoBehaviour
                     lamp = true;
                 else if (interactable.name == "Photo" && photo == false)
                 {
+                    cutscenecam.SetActive(true);
+                    
+                    player.SetActive(false);
+
+                    animcam.Play("cutscenecam");
+                    animphoto1.Play("photo1");
+
                     interactable.GetComponent<AudioSource>().Play();
+                   
                     photo = true;
                 }
                 else if (interactable.name == "Photo2" && photo2 == false)
