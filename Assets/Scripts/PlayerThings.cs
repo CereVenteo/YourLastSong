@@ -14,11 +14,12 @@ public class PlayerThings : MonoBehaviour
 
     public GameObject interactable;
     public GameObject cutscenecam;
+    public GameObject finscenecam;
     public GameObject player;
     public GameObject photo1;
     public GameObject photo_2;
 
-
+    public Animator fincam;
     public Animator animcam;
     public Animator animphoto1;
     public Animator animphoto2;
@@ -27,7 +28,7 @@ public class PlayerThings : MonoBehaviour
     void Start()
     {
         animcam = cutscenecam.GetComponent<Animator>();
-       
+        fincam = finscenecam.GetComponent<Animator>();
         animphoto1 = photo1.GetComponent<Animator>();
         animphoto2 = photo_2.GetComponent<Animator>();
     }
@@ -81,5 +82,18 @@ public class PlayerThings : MonoBehaviour
                 radio2 = true;
             }
         }
+
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("LOOOOOOOOOL");
+         if(other.gameObject.tag == "Door")
+        {
+            Debug.Log("OTOKO");
+            finscenecam.SetActive(true);
+            fincam.Play("Camfin");
+        }
+    }
+
 }

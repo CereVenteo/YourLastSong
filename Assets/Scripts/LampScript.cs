@@ -18,6 +18,7 @@ public class LampScript : MonoBehaviour
     public Material wall3;
     public GameObject elmuerto;
     public GameObject lallorona;
+    public GameObject doorslap;
 
     // Start is called before the first frame update
     void Start()
@@ -114,6 +115,7 @@ public class LampScript : MonoBehaviour
 
             elmuerto.SetActive(true);
             lallorona.SetActive(true);
+            doorslap.SetActive(false);
         }
         
     }
