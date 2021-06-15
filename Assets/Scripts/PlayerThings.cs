@@ -16,21 +16,28 @@ public class PlayerThings : MonoBehaviour
     public GameObject cutscenecam;
     public GameObject player;
     public GameObject photo1;
+    public GameObject photo_2;
 
 
     public Animator animcam;
     public Animator animphoto1;
+    public Animator animphoto2;
 
 
     void Start()
     {
         animcam = cutscenecam.GetComponent<Animator>();
+       
         animphoto1 = photo1.GetComponent<Animator>();
+        animphoto2 = photo_2.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
+
         if (Input.GetMouseButtonDown(0))
         {
             if (interactable != null)
@@ -41,6 +48,7 @@ public class PlayerThings : MonoBehaviour
                     lamp = true;
                 else if (interactable.name == "Photo" && photo == false)
                 {
+                    
                     cutscenecam.SetActive(true);
                     
                     player.SetActive(false);
@@ -49,11 +57,18 @@ public class PlayerThings : MonoBehaviour
                     animphoto1.Play("photo1");
 
                     interactable.GetComponent<AudioSource>().Play();
-                   
+                    
                     photo = true;
                 }
                 else if (interactable.name == "Photo2" && photo2 == false)
                 {
+
+                    cutscenecam.SetActive(true);
+                    player.SetActive(false);
+
+                    animcam.Play("cutscenecam_3");
+                    animphoto2.Play("photo2");
+
                     interactable.GetComponent<AudioSource>().Play();
                     photo2 = true;
                 }

@@ -770,7 +770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_WalkSpeed
-      value: 1.5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_StepInterval
@@ -804,8 +804,10 @@ MonoBehaviour:
   cutscenecam: {fileID: 1250217638}
   player: {fileID: 220751381}
   photo1: {fileID: 0}
+  photo_2: {fileID: 932411078}
   animcam: {fileID: 1250217639}
   animphoto1: {fileID: 718426144}
+  animphoto2: {fileID: 932411083}
 --- !u!82 &220751388
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1363,7 +1365,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5f6f84f6059700342a8dd2a21e7fed3d, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5f6f84f6059700342a8dd2a21e7fed3d, type: 3}
       propertyPath: m_LocalScale.x
@@ -4041,8 +4043,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 89742632}
   - {fileID: 739177541}
+  - {fileID: 89742632}
   - {fileID: 1601064663}
   - {fileID: 932411077}
   - {fileID: 625094612}
@@ -4569,6 +4571,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &932411083
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932411078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6f232a6f75cf33449eff10e69fdfdd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &953638005
 GameObject:
   m_ObjectHideFlags: 0
@@ -6203,13 +6224,14 @@ GameObject:
   - component: {fileID: 1250217641}
   - component: {fileID: 1250217640}
   - component: {fileID: 1250217639}
+  - component: {fileID: 1250217643}
   m_Layer: 0
   m_Name: Cutscenecam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1250217639
 Animator:
   serializedVersion: 3
@@ -6294,6 +6316,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 16.312, y: -181.182, z: 0}
+--- !u!114 &1250217643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250217638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38edb8739e9f33444be5e1dc6a3de6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 220751381}
 --- !u!1001 &1282524595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8983,7 +9018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 05351ad9cfcc91e448506c6342b074f0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 05351ad9cfcc91e448506c6342b074f0, type: 3}
       propertyPath: m_LocalScale.x
